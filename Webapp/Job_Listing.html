@@ -1,0 +1,445 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+         <title>View Jobs | JobFinder</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+		<link rel="shortcut icon" type="image/x-icon" href="{% static 'web/assets/img/favicon.ico' %}">
+
+		<!-- CSS here -->
+            <link rel="stylesheet" href="{% static 'web/assets/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/owl.carousel.min.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/price_rangs.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/flaticon.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/slicknav.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/animate.min.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/magnific-popup.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/fontawesome-all.min.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/themify-icons.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/slick.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/nice-select.css' %}">
+            <link rel="stylesheet" href="{% static 'web/assets/css/style.css' %}">
+   </head>
+
+   <body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'web/assets/img/logo/logo.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparrent">
+           <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="{% url 'Home' %}"><img src="{% static 'web/assets/img/logo/logo.png' %}" alt=""></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <!-- Main-menu -->
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="{% url 'JobSeeker_Home' %}">JobSeeker</a></li>
+                                            <li><a href="{% url 'Employer_Home' %}">Employer</a></li>
+                                            <li><a href="{% url 'About_page' %}">About</a></li>
+                                            <li><a href="{% url 'Contact_page' %}">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+
+                                <!-- Header-btn -->
+                                <div class="header-btn d-none f-right d-lg-block">
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'user_profile' %}" class="btn head-btn2 btn-lg px-4 py-3 mx-2 shadow" >Profile</a>
+                                        <a href="{% url 'Signout_page' %}" class="btn head-btn2 btn-lg px-4 py-3 mx-2 shadow">Logout</a>
+                                    {% else %}
+                                        <a href="{% url 'Signup_page' %}" class="btn head-btn2 btn-lg px-4 py-3 mx-2 shadow">Register</a>
+                                        <a href="{% url 'Signin_page' %}" class="btn head-btn2 btn-lg px-4 py-3 mx-2 shadow">Login</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+        <!-- Header End -->
+    </header>
+    <main>
+
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+            <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{% static 'web/assets/img/hero/about.jpg' %}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Get your job</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Hero Area End -->
+        <!-- Job List Area Start -->
+        <div class="job-listing-area pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <!-- Left content -->
+                    <div class="col-xl-3 col-lg-3 col-md-4">
+                        <div class="row">
+                            <div class="col-12">
+                                    <div class="small-section-tittle2 mb-45">
+                                    <div class="ion"> <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        width="20px" height="12px">
+                                    <path fill-rule="evenodd"  fill="rgb(27, 207, 107)"
+                                        d="M7.778,12.000 L12.222,12.000 L12.222,10.000 L7.778,10.000 L7.778,12.000 ZM-0.000,-0.000 L-0.000,2.000 L20.000,2.000 L20.000,-0.000 L-0.000,-0.000 ZM3.333,7.000 L16.667,7.000 L16.667,5.000 L3.333,5.000 L3.333,7.000 Z"/>
+                                    </svg>
+                                    </div>
+                                    <h4>Filter Jobs</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Job Category Listing start -->
+                        <div class="job-category-listing mb-50">
+                            <form method="GET" action="{% url 'Job_listing' %}">
+                                <!-- Job Category -->
+                                <div class="single-listing">
+                                    <h4>Job Category</h4>
+                                    <select name="category">
+                                        <option value="">All Categories</option>
+                                        {% for cat in categories %}
+                                        <option value="{{ cat.Category_Name }}">{{ cat.Category_Name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br><br><br><br>
+                                </div>
+
+                                <!-- Job Type -->
+                                <div class="single-listing">
+                                    <h4>Job Type</h4><br>
+                                    <label><input type="checkbox" name="job_type" value="Full Time"> Full Time</label>
+                                    <label><input type="checkbox" name="job_type" value="Part Time"> Part Time</label>
+                                    <label><input type="checkbox" name="job_type" value="Remote"> Remote</label>
+                                    <label><input type="checkbox" name="job_type" value="Freelance"> Freelance</label>
+                                    <br><br><br>
+                                </div>
+
+                                <!-- Job Location -->
+                                <div class="single-listing">
+                                    <h4>Location</h4>
+                                     <select name="location">
+                                        <option value="">Anywhere</option>
+                                        {% for loc in locations %}
+                                            <option value="{{ loc.Location}}">{{ loc.Location }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <br><br><br>
+                                </div>
+
+                                <!-- Experience -->
+                                <div class="single-listing">
+                                    <h4>Experience</h4>
+                                    <label><input type="checkbox" name="experience" value="1"> 0 Years</label>
+                                    <label><input type="checkbox" name="experience" value="1"> 1 Years</label>
+                                    <label><input type="checkbox" name="experience" value="2"> 2 Years</label>
+                                    <label><input type="checkbox" name="experience" value="3"> 3 Years</label>
+                                    <label><input type="checkbox" name="experience" value="4"> 4 Years</label>
+                                    <label><input type="checkbox" name="experience" value="4"> 5 Years</label>
+                                    <br><br><br>
+                                </div>
+
+                                <!-- Date Posted -->
+                                <div class="single-listing">
+                                    <h4>Posted Within</h4>
+                                    <label><input type="radio" name="date_posted" value="1"> Last 24 Hours</label>
+                                    <label><input type="radio" name="date_posted" value="7"> Last 7 Days</label>
+                                    <label><input type="radio" name="date_posted" value="30"> Last 30 Days</label>
+                                    <br><br>
+                                </div>
+
+
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-danger">Apply Filters</button>
+                            </form>
+
+                        </div>
+                        <!-- Job Category Listing End -->
+                    </div>
+                    <!-- Right content -->
+                    <div class="col-xl-9 col-lg-9 col-md-8">
+                        <!-- Featured_job_start -->
+                        <section class="featured-job-area">
+                            <div class="container">
+                                <!-- Count of Job list Start -->
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="count-job mb-35">
+                                            <!--<span>39, 782 Jobs found</span>-->
+                                            <!-- Select job items start -->
+
+                                            <!--  Select job items End-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Count of Job list End -->
+                                <!-- single-job-content -->
+                                {% for job in page_obj %}
+                                <div class="single-job-items mb-30">
+                                    <div class="job-items">
+                                        <div class="company-img">
+                                            <a href="{% url 'Job_details' job_id=job.id %}"><img src="{{ job.Company_Image.url }}" alt="" width="80px" height="80px"></a>
+                                        </div>
+                                        <div class="job-tittle job-tittle2">
+                                            <a href="{% url 'Job_details' job_id=job.id %}">
+                                                <h4>{{ job.Job_Title }}</h4>
+                                            </a>
+                                            <ul>
+                                                <li>{{ job.Company_Name }}</li>
+                                                <li><i class="fas fa-map-marker-alt"></i> {{ job.Job_Location }}</li>
+                                                <li>₹ {{ job.Job_Salary }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="items-link items-link2 f-right">
+                                        <a href="{% url 'Job_details' job_id=job.id %}">{{ job.Job_type }}</a>
+                                    </div>
+                                </div>
+                                {% empty %}
+                                <p>No jobs found. Try different filters.</p>
+                                {% endfor %}
+
+                                <!-- single-job-content -->
+                            </div>
+                        </section>
+                        <!-- Featured_job_end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Job List Area End -->
+        <!-- Pagination Start -->
+        <div class="pagination-area pb-115 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="single-wrap d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    {% if page_obj.has_previous %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page=1">&laquo; First</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                                        </li>
+                                    {% endif %}
+
+                                    <li class="page-item active">
+                                        <span class="page-link">
+                                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                                        </span>
+                                    </li>
+
+                                    {% if page_obj.has_next %}
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Pagination End -->
+
+
+    </main>
+    <footer>
+        <!-- Footer Start-->
+        <div class="footer-area footer-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                       <div class="single-footer-caption mb-50">
+                         <div class="single-footer-caption mb-30">
+                             <div class="footer-tittle">
+                                 <h4>About Us</h4>
+                                 <div class="footer-pera">
+                                     <p>Your trusted job portal connecting top employers with skilled professionals. We make hiring simple and effective.</p>
+                                </div>
+                             </div>
+                         </div>
+
+                       </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Contact Info</h4>
+                                <ul>
+                                    <li>
+                                    <p>Address :📍 Town Street, Kochi , India</p>
+                                    </li>
+                                    <li><a href="#">Phone : +8880 44338899</a></li>
+                                    <li><a href="#">Email : jobfinder12@gmail.com</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Important Link</h4>
+                                <ul>
+                                    <li><a href="{% url 'Home' %}">🏠 Home</a></li>
+                                    <li><a href="{% url 'Job_listing' %}">💼 Find Jobs</a></li>
+                                    <li><a href="{% url 'Post_jobs' %}">📝 Post a Job</a></li>
+                                    <li><a href="{% url 'About_page' %}">📖 About Us</a></li>
+                                    <li><a href="{% url 'Contact_page' %}">📩 Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Newsletter</h4>
+                                <div class="footer-pera footer-pera2">
+                                 <p>Subscribe to get the latest job alerts and updates.</p>
+                             </div>
+                             <!-- Form -->
+                             <div class="footer-form" >
+                                 <div id="mc_embed_signup">
+                                     <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                     method="get" class="subscribe_form relative mail_part">
+                                         <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                         class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                         onblur="this.placeholder = ' Email Address '">
+                                         <div class="form-icon">
+                                             <button type="submit" name="submit" id="newsletter-submit"
+                                             class="email_icon newsletter-submit button-contactForm"><img src="{% static 'web/assets/img/icon/form.png' %}" alt=""></button>
+                                         </div>
+                                         <div class="mt-10 info"></div>
+                                     </form>
+                                 </div>
+                             </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               <!--  -->
+               <div class="row footer-wejed justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <!-- logo -->
+                        <div class="footer-logo mb-20">
+                        <a href="index.html"><img src="{% static 'web/assets/img/logo/logo2_footer.png' %}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                    <div class="footer-tittle-bottom">
+                        <span>5000+</span>
+                        <p>Talented Hunter</p>
+                    </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <div class="footer-tittle-bottom">
+                            <span>451</span>
+                            <p>Talented Hunter</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                        <!-- Footer Bottom Tittle -->
+                        <div class="footer-tittle-bottom">
+                            <span>568</span>
+                            <p>Talented Hunter</p>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+        <!-- footer-bottom area -->
+        <div class="footer-bottom-area footer-bg">
+            <div class="container">
+                <div class="footer-border">
+                     <div class="row d-flex justify-content-between align-items-center">
+                         <div class="col-xl-10 col-lg-10 ">
+                             <div class="footer-copy-right">
+                                 <p>&copy; <script>document.write(new Date().getFullYear());</script> JobFinder. All rights reserved.</p>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End-->
+    </footer>
+
+	<!-- JS here -->
+
+		<!-- All JS Custom Plugins Link Here here -->
+        <script src="{% static 'web/assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+		<!-- Jquery, Popper, Bootstrap -->
+		<script src="{% static 'web/assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/popper.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/bootstrap.min.js' %}"></script>
+	    <!-- Jquery Mobile Menu -->
+        <script src="{% static 'web/assets/js/jquery.slicknav.min.js' %}"></script>
+
+		<!-- Jquery Slick , Owl-Carousel Range -->
+        <script src="{% static 'web/assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/slick.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/price_rangs.js' %}"></script>
+		<!-- One Page, Animated-HeadLin -->
+        <script src="{% static 'web/assets/js/wow.min.js' %}"></script>
+		<script src="{% static 'web/assets/js/animated.headline.js' %}"></script>
+        <script src="{% static 'web/assets/js/jquery.magnific-popup.js' %}"></script>
+
+		<!-- Scrollup, nice-select, sticky -->
+        <script src="{% static 'web/assets/js/jquery.scrollUp.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/jquery.nice-select.min.js' %}"></script>
+		<script src="{% static 'web/assets/js/jquery.sticky.js' %}"></script>
+
+        <!-- contact js -->
+        <script src="{% static 'web/assets/js/contact.js' %}"></script>
+        <script src="{% static 'web/assets/js/jquery.form.js' %}"></script>
+        <script src="{% static 'web/assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'web/assets/js/mail-script.js' %}"></script>
+        <script src="{% static 'web/assets/js/jquery.ajaxchimp.min.js' %}"></script>
+
+		<!-- Jquery Plugins, main Jquery -->
+        <script src="{% static 'web/assets/js/plugins.js' %}"></script>
+        <script src="{% static 'web/assets/js/main.js' %}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | JobFinder</title>
+  <link rel="stylesheet" href="{% static 'web/assets/css/login.css' %}">
+</head>
+<body>
+
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Register</h1>
+			<br>
+
+			<input type="text" placeholder="Username" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<input type="password" placeholder="Confirm Password" /><br>
+			<button type="submit">Sign Up</button>
+		</form>
+	</div>
+
+
+
+
+	<div class="form-container sign-in-container">
+		<form method="post" action="{% url 'User_login' %}">
+			{% csrf_token %}
+			<h1>Login</h1>
+			<br><br>
+
+			<input type="text" placeholder="Username" name="login_username" required />
+			<input type="password" placeholder="Password" name="login_pass" required /><br>
+<!--			<a href="#">Forgot your password?</a>-->
+<!--			<div class="social-container">-->
+<!--				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>-->
+<!--				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>-->
+<!--				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+<!--			</div>-->
+<!--				<span>or use your account</span>-->
+			<button type="submit">Login</button>
+			{% if messages %}
+			<div class="messages">
+				{% for message in messages %}
+					<p style="color: red;">{{ message }}</p>
+				{% endfor %}
+			</div>
+			{% endif %}
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<a href="{% url 'Signup_page' %}">
+				<button class="ghost" id="signUp">Sign up</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'web/assets/js/login.js' %}"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		document.querySelector("form").addEventListener("submit", function (event) {
+			let username = document.querySelector("input[name='login_username']").value.trim();
+			let password = document.querySelector("input[name='login_pass']").value.trim();
+
+			if (username === "") {
+				alert("Username cannot be empty.");
+				event.preventDefault();
+				return;
+			}
+
+			if (password.length < 6) {
+				alert("Password must be at least 6 characters long.");
+				event.preventDefault();
+				return;
+			}
+		});
+	});
+</script>
+
+
+</body>
+</html>

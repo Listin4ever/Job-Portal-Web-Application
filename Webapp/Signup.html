@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | JobFinder</title>
+  <link rel="stylesheet" href="{% static 'web/assets/css/login.css' %}">
+</head>
+<body>
+
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form>
+			<h1>Sign in</h1>
+			<br><br>
+
+			<input type="text" placeholder="Username" />
+			<input type="password" placeholder="Password" /><br>
+<!--			<a href="#">Forgot your password?</a>-->
+<!--			<div class="social-container">-->
+<!--				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>-->
+<!--				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>-->
+<!--				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+<!--			</div>-->
+<!--				<span>or use your account</span>-->
+			<button type="submit">Sign In</button>
+		</form>
+	</div>
+
+
+
+
+	<div class="form-container sign-in-container">
+		<form method="post" action="{% url 'Save_registration' %}">
+			{% csrf_token %}
+			<h1>Register</h1>
+			<br>
+
+			<input type="text" placeholder="Username" name="username" required/>
+			<input type="email" placeholder="Email" name="email" required/>
+			<input type="password" placeholder="Password" name="pass" required/>
+			<input type="password" placeholder="Confirm Password" name="confirmpass" required/><br>
+			<button type="submit">Register</button>
+
+			{% if messages %}
+			<div class="messages">
+				{% for message in messages %}
+					<p style="color: red;">{{ message }}</p>
+				{% endfor %}
+    		</div>
+			{% endif %}
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signIn">Sign up</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<a href="{% url 'Signin_page' %}">
+				<button class="ghost" id="signUp">Signin</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'web/assets/js/login.js' %}"></script>
+<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			document.querySelector("form").addEventListener("submit", function (event) {
+				let username = document.querySelector("input[name='username']").value.trim();
+				let email = document.querySelector("input[name='email']").value.trim();
+				let password = document.querySelector("input[name='pass']").value;
+				let confirmPassword = document.querySelector("input[name='confirmpass']").value;
+
+				let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+				let usernamePattern = /^[a-zA-Z0-9_]{3,15}$/;  // Allow letters, numbers, underscores (3-15 chars)
+
+				if (username === "" || !usernamePattern.test(username)) {
+					alert("Please enter a valid username (3-15 characters, no spaces).");
+					event.preventDefault();
+					return;
+				}
+
+				if (!emailPattern.test(email)) {
+					alert("Please enter a valid email address.");
+					event.preventDefault();
+					return;
+				}
+
+				if (password.length < 6) {
+					alert("Password must be at least 6 characters long.");
+					event.preventDefault();
+					return;
+				}
+
+				if (password !== confirmPassword) {
+					alert("Passwords do not match.");
+					event.preventDefault();
+				}
+			});
+		});
+</script>
+
+
+</body>
+</html>
