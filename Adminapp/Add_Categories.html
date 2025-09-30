@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Categories</title>
+</head>
+<body>
+
+<div class="col-sm-12 col-xl-6" style="margin-top:100px; margin-left:200px;">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">ADD NEW CATEGORIES</h6><br>
+
+                            <form method="post" action="{% url 'Save_categories' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="Categories_name"><br>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="formFileMultiple" class="form-label">Upload category image</label>
+                                    <input class="form-control" type="file" id="formFileMultiple" name="Category_Image">
+                                </div><br>
+
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'Index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Location</title>
+</head>
+<body>
+
+<div class="col-sm-12 col-xl-6" style="margin-top:100px; margin-left:200px;">
+                        <div class="bg-light rounded h-100 p-4">
+                            <h6 class="mb-4">ADD LOCATION</h6><br>
+
+                            <form method="post" action="{% url 'Save_location' %}">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="L_Location"><br>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </form>
+                        </div>
+                    </div>
+
+</body>
+</html>
+{% endblock %}
